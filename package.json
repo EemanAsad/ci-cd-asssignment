@@ -1,6 +1,7 @@
 {
   "name": "ci-cd-asssignment",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "directories": {
     "test": "tests"
@@ -20,6 +21,6 @@
     "express": "^5.1.0"
   },
   "devDependencies": {
-    "eslint": "^8.57.1"
+    "eslint": "^9.34.0"
   }
 }
