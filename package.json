@@ -1,0 +1,25 @@
+{
+  "name": "ci-cd-asssignment",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "node index.js",
+    "build": "node build.js",
+    "start": "node dist/index.js",
+    "lint": "eslint .",
+    "test": "node --test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.34.0"
+  }
+}
