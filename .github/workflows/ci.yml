@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test   # ✅ no --ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Zip artifact
+        run: |
+          mkdir -p release
+          cp -r dist package.json package-lock.json release/
+          cd release
+          zip -r app.zip .
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-${{ github.sha }}
+          path: release/app.zip
+          retention-days: 3
